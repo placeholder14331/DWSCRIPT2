@@ -1,0 +1,48 @@
+local StarterGui = game:GetService("StarterGui")
+
+local function getExecutor()
+    local name = "unknown"
+    pcall(function()
+        if identifyexecutor then name = identifyexecutor()
+        elseif getexecutorname then name = getexecutorname()
+         end
+    end)
+    return string.lower(tostring(name))
+end
+local executor = getExecutor()
+
+local function notify(title, text, icon)
+    pcall(function()
+        StarterGui:SetCore("SendNotification", {
+            Title = title,
+            Text = text,
+            Duration = 5,
+            Icon = "rbxassetid://86447290254935"
+        })
+    end)
+end
+
+local isXeno = executor:find("xeno", 1, true)
+local isSolara = executor:find("solara", 1, true)
+local isLuna = executor:find("luna", 1, true)
+
+if game.PlaceId == 18259975825 then
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/33bb92dc9edaecc20f39f4ba0b5a16b9.lua"))()
+elseif game.PlaceId == 13438553315
+or game.PlaceId == 72144869714561
+or game.PlaceId == 112060227074307 then
+    if isXeno or isSolara or isLuna then
+        repeat task.wait() until game:IsLoaded()
+        notify("Serenium", "Solara/Xeno Detected, loading supported version")
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/efe3ffae9029e1fa14f9b1f70bcbaf96.lua"))()
+    else
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/efe3ffae9029e1fa14f9b1f70bcbaf96.lua"))()
+    end
+elseif game.PlaceId == 114931763326993
+or game.PlaceId == 109185433585492 then
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/33bb92dc9edaecc20f39f4ba0b5a16b9.lua"))()
+elseif game.PlaceId == 443406476 then
+    loadstring(game:HttpGet("https://vss.pandadevelopment.net/virtual/file/75602d5ff122410d"))()
+else
+    notify("Wrong game", "Script Won't load: Wrong PlaceID")
+end
