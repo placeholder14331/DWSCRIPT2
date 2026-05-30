@@ -4,45 +4,59 @@ local function getExecutor()
     local name = "unknown"
     pcall(function()
         if identifyexecutor then name = identifyexecutor()
-        elseif getexecutorname then name = getexecutorname()
-         end
+        elseif getexecutorname then name = getexecutorname() end
     end)
     return string.lower(tostring(name))
 end
-local executor = getExecutor()
 
-local function notify(title, text, icon)
+local executor = getExecutor()
+local isXeno   = executor:find("xeno",   1, true)
+local isSolara = executor:find("solara", 1, true)
+local isLuna   = executor:find("luna",   1, true)
+
+local function notify(title, text)
     pcall(function()
         StarterGui:SetCore("SendNotification", {
-            Title = title,
-            Text = text,
+            Title    = title,
+            Text     = text,
             Duration = 5,
-            Icon = "rbxassetid://86447290254935"
+            Icon     = "rbxassetid://86447290254935"
         })
     end)
 end
 
-local isXeno = executor:find("xeno", 1, true)
-local isSolara = executor:find("solara", 1, true)
-local isLuna = executor:find("luna", 1, true)
+local function loadPrimary()
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/efe3ffae9029e1fa14f9b1f70bcbaf96.lua"))()
+end
 
-if game.PlaceId == 18259975825 then
+local function loadLegacy()
     loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/33bb92dc9edaecc20f39f4ba0b5a16b9.lua"))()
-elseif game.PlaceId == 13438553315
-or game.PlaceId == 72144869714561
-or game.PlaceId == 112060227074307 then
+end
+
+local placeId = game.PlaceId
+
+local IdkWhatToPutInThisButIGuessThatsItAndOhBtwJoinAWP = {
+    [13438553315]     = true, -- DW LC
+    [72144869714561]  = true, -- DW LC MGSVR
+    [112060227074307] = true, -- DW LC NGTY
+    [115209351507608] = true, -- The Armory
+}
+
+local awp = {
+    [18259975825]     = true, -- G/N
+    [114931763326993] = true, -- DW LEGACY
+    [109185433585492] = true, -- DW LEGACY NGTMR
+}
+
+if IdkWhatToPutInThisButIGuessThatsItAndOhBtwJoinAWP[placeId] then
+    repeat task.wait() until game:IsLoaded()
     if isXeno or isSolara or isLuna then
-        repeat task.wait() until game:IsLoaded()
         notify("Serenium", "Solara/Xeno Detected, loading supported version")
-        loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/efe3ffae9029e1fa14f9b1f70bcbaf96.lua"))()
-    else
-        loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/efe3ffae9029e1fa14f9b1f70bcbaf96.lua"))()
     end
-elseif game.PlaceId == 114931763326993
-or game.PlaceId == 109185433585492 then
-    loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/33bb92dc9edaecc20f39f4ba0b5a16b9.lua"))()
-elseif game.PlaceId == 443406476 then
-    loadstring(game:HttpGet("https://vss.pandadevelopment.net/virtual/file/75602d5ff122410d"))()
+    loadPrimary()
+elseif awp[placeId] then
+    repeat task.wait() until game:IsLoaded()
+    loadLegacy()
 else
     notify("Wrong game", "Script Won't load: Wrong PlaceID")
 end
