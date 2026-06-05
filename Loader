@@ -40,6 +40,8 @@ local IdkWhatToPutInThisButIGuessThatsItAndOhBtwJoinAWP = {
     [72144869714561]  = true, -- DW LC MGSVR
     [112060227074307] = true, -- DW LC NGTY
     [115209351507608] = true, -- The Armory
+    [155615604]       = true, -- Prison life
+    [135564683255158] = true, -- Prison life VC
 }
 
 local awp = {
