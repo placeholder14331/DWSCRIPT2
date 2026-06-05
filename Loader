@@ -1,4 +1,3 @@
-script_key="PueZjBIqkHqPQRIEewiWwbpUsyqYPYjA";
 local StarterGui = game:GetService("StarterGui")
 
 local function getExecutor()
