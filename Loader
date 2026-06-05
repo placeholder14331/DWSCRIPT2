@@ -1,3 +1,4 @@
+script_key="PueZjBIqkHqPQRIEewiWwbpUsyqYPYjA";
 local StarterGui = game:GetService("StarterGui")
 
 local function getExecutor()
@@ -25,11 +26,11 @@ local function notify(title, text)
     end)
 end
 
-local function ldr()
+local function ldr2()
     loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/efe3ffae9029e1fa14f9b1f70bcbaf96.lua"))()
 end
 
-local function ldr2()
+local function ldr()
     loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/33bb92dc9edaecc20f39f4ba0b5a16b9.lua"))()
 end
 
@@ -40,14 +41,14 @@ local IdkWhatToPutInThisButIGuessThatsItAndOhBtwJoinAWP = {
     [72144869714561]  = true, -- DW LC MGSVR
     [112060227074307] = true, -- DW LC NGTY
     [115209351507608] = true, -- The Armory
-    [155615604]       = true, -- Prison life
-    [135564683255158] = true, -- Prison life VC
 }
 
 local awp = {
     [18259975825]     = true, -- G/N
     [114931763326993] = true, -- DW LEGACY
     [109185433585492] = true, -- DW LEGACY NGTMR
+    [155615604]       = true, -- Prison life
+    [135564683255158] = true, -- Prison life VC
 }
 
 if IdkWhatToPutInThisButIGuessThatsItAndOhBtwJoinAWP[placeId] then
