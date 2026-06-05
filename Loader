@@ -25,11 +25,11 @@ local function notify(title, text)
     end)
 end
 
-local function loadPrimary()
+local function ldr2()
     loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/efe3ffae9029e1fa14f9b1f70bcbaf96.lua"))()
 end
 
-local function loadLegacy()
+local function ldr()
     loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/33bb92dc9edaecc20f39f4ba0b5a16b9.lua"))()
 end
 
@@ -55,10 +55,10 @@ if IdkWhatToPutInThisButIGuessThatsItAndOhBtwJoinAWP[placeId] then
     if isXeno or isSolara or isLuna then
         notify("Serenium", "Solara/Xeno Detected, loading supported version")
     end
-    loadPrimary()
+    ldr2()
 elseif awp[placeId] then
     repeat task.wait() until game:IsLoaded()
-    loadLegacy()
+    ldr()
 else
     notify("Wrong game", "Script Won't load: Wrong PlaceID")
 end
